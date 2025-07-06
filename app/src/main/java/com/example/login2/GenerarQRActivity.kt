@@ -71,7 +71,7 @@ class GenerarQRActivity : AppCompatActivity() {
     }
 
     private fun cargarTiposDeInvitacionDesdeApi() {
-        val url = "http://10.0.2.2:7011/api/invitado/tipos-invitacion"
+        val url = "http://192.168.1.25:7011/api/invitado/tipos-invitacion"
         val queue = Volley.newRequestQueue(this)
         val request = JsonArrayRequest(url,
             { response ->
@@ -111,7 +111,7 @@ class GenerarQRActivity : AppCompatActivity() {
             return
         }
 
-        val url = "http://10.0.2.2:7011/api/invitado/registrar"
+        val url = "http://192.168.1.25:7011/api/invitado/registrar"
         val jsonBody = JSONObject().apply {
             put("nombre", nombre)
             put("apellido_paterno", apellidoPaterno)
@@ -174,18 +174,14 @@ class GenerarQRActivity : AppCompatActivity() {
             textAlign = android.graphics.Paint.Align.CENTER
         }
 
-        // Título centrado
         canvas.drawText("Código QR de Invitación", (pageWidth / 2).toFloat(), 80f, paintText)
 
-        // Escalar el bitmap a 300x300
         val scaledBitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, false)
 
-        // Dibujar el QR centrado
         val left = (pageWidth - scaledBitmap.width) / 2
         val top = 120
         canvas.drawBitmap(scaledBitmap, left.toFloat(), top.toFloat(), null)
 
-        // Texto QR centrado abajo del código
         canvas.drawText(textoQR, (pageWidth / 2).toFloat(), (top + 320).toFloat(), paintTextSmall)
 
         pdfDocument.finishPage(page)

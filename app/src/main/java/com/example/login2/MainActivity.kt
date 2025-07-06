@@ -8,7 +8,9 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
+import java.security.MessageDigest
 import android.util.Base64
+import android.util.Log
 import java.io.File
 import java.io.FileOutputStream
 
@@ -35,12 +37,15 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            val hashedPass = hashPasswordSHA256(password)
+
+
             val jsonBody = JSONObject().apply {
                 put("usuario", username)
-                put("password", password)
+                put("password", hashedPass)
             }
 
-            val url = "http://10.0.2.2:7011/api/auth/login"
+            val url = "http://192.168.1.25:7011/api/auth/login"
 
             val request = JsonObjectRequest(
                 Request.Method.POST, url, jsonBody,
@@ -75,12 +80,20 @@ class MainActivity : AppCompatActivity() {
                 },
                 { error ->
                     error.printStackTrace()
-                    showToast("Error al iniciar sesión: ${error.message ?: "Error desconocido"}")
+                    showToast("Error al iniciar sesión: ${error.message ?: ""}")
+
                 }
             )
 
             Volley.newRequestQueue(this).add(request)
         }
+    }
+
+    private fun hashPasswordSHA256(password: String): String {
+        val bytes = MessageDigest.getInstance("SHA-256")
+            .digest(password.toByteArray(Charsets.UTF_8))
+
+        return bytes.joinToString(separator = "") { "%02x".format(it) }
     }
 
     private fun showToast(message: String) {
