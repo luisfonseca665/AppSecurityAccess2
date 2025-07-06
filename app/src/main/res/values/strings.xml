@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">LoginApp</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="login">Login</string>
+    <string name="username_hint">Enter your username</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="perfil">Perfil</string>
+    <string name="generar_qr">Generar QR</string>
+    <string name="mis_invitados">Mis Invitados</string>
+    <string name="historial">Historial</string>
+    <string name="salir">Salir</string>
+    <string name="ajustes">Ajustes</string>
+</resources>

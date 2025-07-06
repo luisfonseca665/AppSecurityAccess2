@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="24dp">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTituloQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generar Código QR"
+        android:textColor="@color/pastel_purple_dark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Nombre -->
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloQR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Apellido paterno -->
+    <EditText
+        android:id="@+id/etApellidoPaterno"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Apellido paterno"
+        android:minHeight="48dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etNombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Apellido materno -->
+    <EditText
+        android:id="@+id/etApellidoMaterno"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Apellido materno"
+        android:minHeight="48dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etApellidoPaterno"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Fecha vigencia -->
+    <EditText
+        android:id="@+id/etFechaVigencia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Fecha vigencia (YYYY-MM-DD)"
+        android:inputType="datetime"
+        android:minHeight="48dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etApellidoMaterno"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Spinner para tipo de invitación -->
+    <Spinner
+        android:id="@+id/spinnertipoinvitacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etFechaVigencia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Botón generar QR -->
+    <Button
+        android:id="@+id/btnGenerarCodigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generar QR"
+        android:backgroundTint="@color/pastel_purple_dark"
+        android:textColor="@android:color/white"
+        android:minHeight="48dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintTop_toBottomOf="@id/spinnertipoinvitacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Imagen QR -->
+    <ImageView
+        android:id="@+id/ivCodigoQR"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_qr_code"
+        app:layout_constraintTop_toBottomOf="@id/btnGenerarCodigo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Botón Ver/Compartir PDF -->
+    <Button
+        android:id="@+id/btnVerCompartirPDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver / Compartir PDF"
+        android:backgroundTint="@color/pastel_purple_dark"
+        android:textColor="@android:color/white"
+        android:minHeight="48dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintTop_toBottomOf="@id/ivCodigoQR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
