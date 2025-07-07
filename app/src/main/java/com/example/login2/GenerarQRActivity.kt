@@ -71,7 +71,7 @@ class GenerarQRActivity : AppCompatActivity() {
     }
 
     private fun cargarTiposDeInvitacionDesdeApi() {
-        val url = "http://192.168.0.4:7011/api/invitado/tipos-invitacion"
+        val url = "http://192.168.1.25:7011/api/invitado/tipos-invitacion"
         val queue = Volley.newRequestQueue(this)
         val request = JsonArrayRequest(url,
             { response ->
@@ -111,7 +111,7 @@ class GenerarQRActivity : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.0.4:7011/api/invitado/registrar"
+        val url = "http://192.168.1.25:7011/api/invitado/registrar"
         val jsonBody = JSONObject().apply {
             put("nombre", nombre)
             put("apellido_paterno", apellidoPaterno)
