@@ -15,6 +15,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
         val idUsuario = intent.getIntExtra("id_usuario", -1)
         val nombreUsuario = intent.getStringExtra("usuario") ?: "Usuario"
         val imagePath = intent.getStringExtra("image_path")

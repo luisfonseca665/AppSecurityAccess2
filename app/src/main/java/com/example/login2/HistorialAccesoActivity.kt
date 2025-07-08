@@ -29,7 +29,7 @@ class HistorialAccesoActivity : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.1.25:7011/api/acceso/historial?id_usuario=$idUsuario"
+        val url = "http://192.168.0.168:7011/api/acceso/historial?id_usuario=$idUsuario"
 
         val request = JsonArrayRequest(
             Request.Method.GET, url, null,

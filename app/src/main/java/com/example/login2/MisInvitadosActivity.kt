@@ -36,7 +36,7 @@ class MisInvitadosActivity : AppCompatActivity() {
     }
 
     private fun obtenerInvitadosPorUsuario(idUsuario: Int) {
-        val url = "http://192.168.1.25:7011/api/Invitado/mis-invitados/$idUsuario"
+        val url = "http://192.168.0.33:7011/api/Invitado/mis-invitados/$idUsuario"
 
         val request = JsonArrayRequest(
             Request.Method.GET, url, null,

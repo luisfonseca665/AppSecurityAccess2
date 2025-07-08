@@ -71,7 +71,7 @@ class GenerarQRActivity : AppCompatActivity() {
     }
 
     private fun cargarTiposDeInvitacionDesdeApi() {
-        val url = "http://192.168.1.25:7011/api/invitado/tipos-invitacion"
+        val url = "http://192.168.0.33:7011/api/invitado/tipos-invitacion"
         val queue = Volley.newRequestQueue(this)
         val request = JsonArrayRequest(url,
             { response ->
@@ -97,6 +97,7 @@ class GenerarQRActivity : AppCompatActivity() {
         var fechaVigencia = etFechaVigencia.text.toString().trim()
         val tipoInvitacionSeleccionado = spinnerTipoInvitacion.selectedItem?.toString() ?: ""
 
+
         if (nombre.isEmpty() || apellidoPaterno.isEmpty() || tipoInvitacionSeleccionado.isEmpty() || fechaVigencia.isEmpty()) {
             Toast.makeText(this, "Por favor llena los campos obligatorios", Toast.LENGTH_SHORT).show()
             return
@@ -111,7 +112,7 @@ class GenerarQRActivity : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.1.25:7011/api/invitado/registrar"
+        val url = "http://192.168.0.33:7011/api/invitado/registrar"
         val jsonBody = JSONObject().apply {
             put("nombre", nombre)
             put("apellido_paterno", apellidoPaterno)
@@ -119,6 +120,7 @@ class GenerarQRActivity : AppCompatActivity() {
             put("fecha_vigencia", fechaVigencia)
             put("id_usuario", idUsuarioSesion)
             put("tipo_invitacion", tipoInvitacionSeleccionado)
+            put("estatus","Pendiente")
         }
 
         val requestQueue = Volley.newRequestQueue(this)
@@ -173,7 +175,6 @@ class GenerarQRActivity : AppCompatActivity() {
             textSize = 14f
             textAlign = android.graphics.Paint.Align.CENTER
         }
-
         canvas.drawText("Código QR de Invitación", (pageWidth / 2).toFloat(), 80f, paintText)
 
         val scaledBitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, false)
@@ -213,6 +214,5 @@ class GenerarQRActivity : AppCompatActivity() {
         startActivity(Intent.createChooser(intent, "Compartir PDF usando"))
     }
 }
-
 
 

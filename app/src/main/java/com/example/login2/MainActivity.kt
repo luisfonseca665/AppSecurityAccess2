@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 put("password", hashedPass)
             }
 
-            val url = "http://192.168.1.25:7011/api/auth/login"
+            val url = "http://192.168.0.168:7011/api/auth/login"
 
             val request = JsonObjectRequest(
                 Request.Method.POST, url, jsonBody,
